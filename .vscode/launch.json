@@ -1,0 +1,61 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Lancer envsim avec le sous-processus robotsim (C++)",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/envsim.py",
+            "args": [],
+            "cwd": "${workspaceFolder}/build",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            },
+            "console": "integratedTerminal",
+            "preLaunchTask": "CMake: construire"
+        },
+        {
+            "name": "C++: Attacher au sous-processus",
+            "type": "cppdbg",
+            "request": "attach",
+            "processId": "${command:pickProcess}",
+            "program": "${workspaceFolder}/build/robotsim",
+            "MIMode": "${input:debuggerType}",
+            "setupCommands": [
+                {
+                    "description": "Activer l'affichage amélioré",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
+            "name": "C++: Lancer le fichier actuel",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/${fileBasenameNoExtension}",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "${input:debuggerType}",
+            "setupCommands": [
+                {
+                    "description": "Activer l'affichage amélioré",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "CMake: construire"
+        }
+    ],
+    "inputs": [
+        {
+            "id": "debuggerType",
+            "type": "pickString",
+            "options": ["gdb", "lldb"],
+            "description": "Sélectionnez le débogueur à utiliser"
+        }
+    ]
+}
