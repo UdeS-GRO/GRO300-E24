@@ -2,7 +2,7 @@
 #include <cmath>
 #include <cstdlib>
 
-int main(int argc, char** argv)
+int main()
 {
     float x = 0.0;
     float y = 0.0;
@@ -12,7 +12,7 @@ int main(int argc, char** argv)
     // de x et y.
     // Lorsque y == 0.0, on ajoute "!!!" à la fin de la ligne. 
     for (int i = 0; i < 101; ++i) {
-        y = sin(x * M_PI);
+        y = static_cast<float>(sin(x * M_PI));
 
         // Note: "%9f" indique qu'on souhaite avoir exactement 9 caractères
         // pour afficher la valeur, incluant les décimales et le signe.
@@ -25,7 +25,7 @@ int main(int argc, char** argv)
         }                                         
         printf("\n");
 
-        x += 0.1;
+        x += 0.1f;
     }
 
     return 0;

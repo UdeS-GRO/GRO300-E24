@@ -1,6 +1,8 @@
 #include <cstdio>
 #include <thread>
 #include <mutex>
+#include <chrono>
+
 
 // Espace anonyme pour les variables globales et partagées :
 namespace {
@@ -15,17 +17,18 @@ void accum(int d, int f)
     }
 }
 
-int main(int argc, char** argv)
+int main()
 {
+    auto start = std::chrono::steady_clock::now();
     // Ce programme tente d'obtenir la somme des entiers de 1 à 10000 en
     // divisant le travail en quatre fils indépendants.
     // La somme devrait être 50005000.
-    // On répète le travail 100 fois pour vérifier si le résultat est constant.
+    // On répète le travail 1000 fois pour vérifier si le résultat est constant.
     // On compte également le nombre d'essais valides.
     
     int succes = 0;
      
-    for (int i = 0; i < 100; ++i) {
+    for (int i = 0; i < 1000; ++i) {
         somme_ = 0;
 
         // Démarre 4 fils avec chacun une portion égale de 1 à 10000 :
@@ -60,7 +63,10 @@ int main(int argc, char** argv)
         }
     }
 
-    printf("Nombre de sommes justes (devrait être 100) : %d\n.", succes);
+    printf("Nombre de sommes justes (devrait être 1000) : %d.\n", succes);
+
+    auto stop = std::chrono::steady_clock::now();
+    printf("Temps d'exécution : %lld ms.\n", std::chrono::duration_cast<std::chrono::milliseconds>(stop - start).count());
 
     return 0;
 }

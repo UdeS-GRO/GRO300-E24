@@ -52,7 +52,7 @@ void cons()
 
 }
 
-int main(int argc, char** argv)
+int main()
 {
     std::thread t_prod(prod);
     std::thread t_cons(cons);

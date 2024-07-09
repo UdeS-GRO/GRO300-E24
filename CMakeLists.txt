@@ -3,6 +3,7 @@ project(robotsim)
 
 find_package(Python REQUIRED)
 set(CMAKE_CXX_STANDARD 20)
+add_compile_options(-Wall -Wextra -Wconversion -Wno-unused)
 enable_testing()
 
 include_directories(${PROJECT_SOURCE_DIR})
