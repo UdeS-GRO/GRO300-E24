@@ -6,6 +6,7 @@ Ce dépôt contient le code de départ pour l'APP6 du cours GRO300.
 
 - Connexion Internet
 - Raspberry Pi 5 avec la dernière version de Raspberry Pi OS
+- Une copie complète de ce dépôt (suivez les instructions sur GitHub pour le clôner ou télécharger la copie en format `zip`).
 
 Notez que le code devrait être utilisable dans n'importe système Linux ou macOS récent. Or, vous devrez vous-mêmes adapter les instructions suivantes pour compiler et exécuter le code de cet APP dans l'environnement de votre choix.  
 
